@@ -18,7 +18,8 @@ const animals = [
  * FUNCTION DESCRIPTION
  * ------------------
  * Adds up the `count` key of each animal in the array and returns a total.
- * @param {Object[]} animals - An array of animal objects. See above for the shape of the object.
+ * @param {Object[]} animals - An array of animal objects. See above for the shape 
+ * of the object.
  * @returns {number} The total of all animal counts.
  *
  * EXAMPLE
@@ -26,13 +27,25 @@ const animals = [
  * getTotalCount(animals); //> 28
  * getTotalCount([]); //> 0 // returns 0 if the input array is empty
  */
-function getTotalCount(animals) {}
+function getTotalCount(animals) {
+  if (animals.length === 0) {
+    return 0;
+  }
+  let totalCount = 0;
+  for (let i = 0; i < animals.length; i++) {
+    const animal = animals[i];
+    totalCount += animal.count;
+  }
+
+  return totalCount;
+}
 
 /**
  * FUNCTION DESCRIPTION
  * ------------------
  * Returns the `kind` for each object from the inputted array.
- * @param {Object[]} animals - An array of animal objects. See above for the shape of the object.
+ * @param {Object[]} animals - An array of animal objects. 
+ * See above for the shape of the object.
  * @returns {string[]} An array of strings, where each string is a kind of animal.
  *
  * EXAMPLE
@@ -40,15 +53,31 @@ function getTotalCount(animals) {}
  * getAllKinds(animals); //> ["Pig", "Cow", "Chicken", "Horse", "Dog", "Cat"]
  * getAllKinds([]); //> [] // returns empty array if input array is empty
  */
-function getAllKinds(animals) {}
+function getAllKinds(animals) {
+  if (animals.length === 0) {
+    return [];
+  }
+ 
+  let animalKind = [];
+  for (let i = 0; i < animals.length; i++) {
+    const animal = animals[i];
+    animalKind.push(animal.kind);
+  }
+
+  return animalKind;
+
+}
 
 /**
  * FUNCTION DESCRIPTION
  * ------------------
- * Returns all objects inside the given array where the `count` of an animal is equal to or greater than the `minimum` amount.
- * @param {Object[]} animals - An array of animal objects. See above for the shape of the object.
+ * Returns all objects inside the given array where the `count` of an animal 
+ * is equal to or greater than the `minimum` amount.
+ * @param {Object[]} animals - An array of animal objects. See above for the 
+ * shape of the object.
  * @param {number} minimum - The lowest count of animals to include.
- * @returns {Object[]} An array of objects, which represents all animals that have a count equal to or greater than the minimum.
+ * @returns {Object[]} An array of objects, which represents all animals that 
+ * have a count equal to or greater than the minimum.
  *
  * EXAMPLE
  * ------------------
@@ -59,13 +88,33 @@ function getAllKinds(animals) {}
   ];
  * filterByCountMinimum([], 3); //> [] // returns empty array if input array is empty
  */
-function filterByCountMinimum(animals, minimum) {}
+function filterByCountMinimum(animals, minimum) {
+
+  if (animals.length === 0) {
+    return [];
+  }
+ 
+  let newAnimal = []
+  let animaminCount = animals[0].count;
+  for (let i = 0; i < animals.length; i++) {
+    const animal = animals[i];
+    if(animal.count >= animaminCount){
+      newAnimal.push(animal);
+
+    }
+  }
+
+  return newAnimal;
+
+}
 
 /**
  * FUNCTION DESCRIPTION
  * ------------------
- * Returns the object with the highest `count`. If more than one object shares the same highest `count`, return the first one.
- * @param {Object[]} animals - An array of animal objects. See above for the shape of the object.
+ * Returns the object with the highest `count`. If more than one object 
+ * shares the same highest `count`, return the first one.
+ * @param {Object[]} animals - An array of animal objects. See above for 
+ * the shape of the object.
  * @returns {Object} The object which represents the animal with the highest count.
  *
  * EXAMPLE
@@ -73,7 +122,25 @@ function filterByCountMinimum(animals, minimum) {}
  * getMostCommonAnimal(animals); //> { kind: "Chicken", count: 11 }
  * getMostCommonAnimal([]); //> null // returns null if the input is empty
  */
-function getMostCommonAnimal(animals) {}
+function getMostCommonAnimal(animals) {
+
+  if (animals.length === 0) {
+    return null;
+  }
+ 
+  let highestCount = animals[0];
+
+  for (let i = 0; i < animals.length; i++) {
+    const animal = animals[i];
+
+    if(animal.count > highestCount.count){
+      highestCount = animal  
+     
+  }
+}
+  return highestCount;
+
+}
 
 // Do not change anything below this line.
 module.exports = {
